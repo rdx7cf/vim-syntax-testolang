@@ -5,31 +5,37 @@
 
 syn	keyword	teType		machine flash network param test dvd
 syn	keyword	teInclude	include
-syn	keyword teMacro		macro
 syn	keyword	teConstant	true false
-syn	keyword	teStatement	abort print type wait sleep mouse click lclick rclick dclick hold release lbtn rbtn check press plug unplug start stop shutdown exec copyto copyfrom break continue
+syn	keyword teMacro		macro
+syn	keyword	teStatement	abort print type wait sleep mouse click lclick rclick dclick hold release lbtn rbtn check press plug unplug start stop shutdown exec copyto copyfrom break continue NOT AND OR DEFINED LESS GREATER EQUAL STRLESS STRGREATER STREQUAL 
 syn	keyword	teConditional	if else
 syn	keyword	teRepeat	for IN RANGE
 
 
-syn	region	teRef		start=+${+			end=+}+
-syn	region	teString	start=+"+	skip=+\\"+	end=+"+		contains=teRef
-syn	region	teExString	start=+"""+	skip=+\\"""+	end=+"""+	contains=teRef
-"syn	region	teBrackets	start=+{+			end=+}+		contains=teString,teExString
+syn	region	teBlock		start=+{+			end=+}+		transparent contains=ALLBUT,teString,teExString	
+syn	region	teReference	start=+${+			end=+}+		containedin=teString,teExString,teValue
+syn	region	teString	start=+"+	skip=+\\"+	end=+"+			
+syn	region	teExString	start=+"""+	skip=+\\"""+	end=+"""+	
 
-syn	keyword	teAttribute	cpus ram disk iso nic video loader qemu_enable_usb3 size source attached_to attached_to_dev adapter_type mac shared_folder host_path readonly fs folder mode 
+syn 	match	teMemSpecifier	/\d+(Kb|Mb|Gb)/
+syn	match	teTimeSpecifier	/\d+(ms|s|m|h)/
+
+syn	keyword	teAttribute	cpus ram disk iso nic video loader qemu_enable_usb3 size source attached_to attached_to_dev adapter_type mac shared_folder host_path readonly fs folder mode	 containedin=teBlock
+syn	match	teValue		+:\s*[^{]*$+hs=s+1				containedin=teBlock contains=teMemSpeficier,teTimeSpecifier,teReference
+
 
 syn	match	teComment	/#.*$/
 
-hi 	def 	link 	teType 		Type
-hi	def	link	teInclude	Include
-hi	def	link	teMacro		Function
-hi 	def 	link 	teConstant 	Constant
-hi 	def 	link 	teStatement 	Statement
-hi 	def 	link 	teConditional 	Conditional
-hi 	def 	link 	teRepeat	Repeat
-hi	def	link	teAttribute	Special
-hi	def	link	teRef		Identifier
-hi 	def 	link 	teString 	String
-hi 	def 	link 	teExString 	String
-hi 	def 	link 	teComment 	Comment
+hi  	link 	teType 		Type
+hi 	link	teInclude	Include
+hi 	link	teMacro		Function
+hi  	link 	teStatement 	Statement
+hi  	link 	teConditional 	Conditional
+hi  	link 	teRepeat	Repeat
+hi 	link	teAttribute	Special
+hi	link	teValue		String
+hi      link 	teConstant 	Constant
+hi 	link	teReference	Underlined
+hi  	link 	teString 	String
+hi  	link 	teExString 	String
+hi  	link 	teComment 	Comment
