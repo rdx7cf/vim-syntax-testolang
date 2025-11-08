@@ -12,16 +12,15 @@ syn	keyword	teConditional	if else
 syn	keyword	teRepeat	for IN RANGE
 
 
-syn	region	teBlock		start=+{+			end=+}+		transparent contains=ALLBUT,teString,teExString	
-syn	region	teReference	start=+${+			end=+}+		containedin=teString,teExString,teValue
+syn	region	teBlock		start=+{+			end=+}+		transparent
+syn	region	teReference	start=+${+			end=+}+		containedin=teString,teExString
 syn	region	teString	start=+"+	skip=+\\"+	end=+"+			
 syn	region	teExString	start=+"""+	skip=+\\"""+	end=+"""+	
 
-syn 	match	teMemSpecifier	/\d+(Kb|Mb|Gb)/
-syn	match	teTimeSpecifier	/\d+(ms|s|m|h)/
+syn 	match	teMemSpecifier	/\d\+\(K\|M\|G\)[bB]/
+syn	match	teTimeSpecifier	/\d\+\(ms\|s\|m\|h\)/
 
 syn	keyword	teAttribute	cpus ram disk iso nic video loader qemu_enable_usb3 size source attached_to attached_to_dev adapter_type mac shared_folder host_path readonly fs folder mode	 containedin=teBlock
-syn	match	teValue		+:\s*[^{]*$+hs=s+1				containedin=teBlock contains=teMemSpeficier,teTimeSpecifier,teReference
 
 
 syn	match	teComment	/#.*$/
@@ -33,7 +32,8 @@ hi  	link 	teStatement 	Statement
 hi  	link 	teConditional 	Conditional
 hi  	link 	teRepeat	Repeat
 hi 	link	teAttribute	Special
-hi	link	teValue		String
+hi	link	teMemSpecifier	Include
+hi	link	teTimeSpecifier Include
 hi      link 	teConstant 	Constant
 hi 	link	teReference	Underlined
 hi  	link 	teString 	String
