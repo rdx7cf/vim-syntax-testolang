@@ -5,11 +5,11 @@ setlocal shiftwidth=4
 setlocal expandtab
 
 function! s:DynHi()
+"	syn clear teIdentifier
 	
-	syn clear teIdentifier
 	
 	let l:ids = []
-	let l:matchdef = '^\s*\(machine\|flash\|network\|param\|test\|dvd\|macro\|nic\|video\|disk\)\s*\zs\w\+\ze:\{,1}\s*{\{,1}'
+	let l:matchdef = '^\s*\(machine\|flash\|network\|param\|test\|dvd\|nic\|video\|disk\)\s*\zs\w\+\ze:\{,1}\s*{\{,1}'
 	let l:matchusg = '^\s*\zs\w\+\ze\s*{\{1}'
 
 	for row in getline(1, '$')
@@ -24,13 +24,9 @@ function! s:DynHi()
 		execute 'syn keyword teIdentifier ' . join(l:ids, ' ')
 	endif
 
-	hi link teIdentifier Identifier
+	hi teIdentifier term=italic cterm=bold gui=italic ctermfg=Brown guifg=Brown 
+	
 
 endfunction
 
-augroup teDynHi
-	autocmd!
-	autocmd BufWritePost,CursorHold <buffer> call s:DynHi()
-augroup END
-
-call s:DynHi()
+autocmd BufEnter,CursorHold,BufWrite,BufRead *.testo call s:DynHi()
