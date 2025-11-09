@@ -1,4 +1,4 @@
-# A Vim Syntax file for TESTO-lang
+# TESTO-lang Vim Additions: Syntax Highlighting, Tab Insertions ...
 
 ## Installation
 Copy all the directories into `~/.vim`.
