@@ -24,7 +24,7 @@ function! s:DynHi()
 		execute 'syn keyword teIdentifier ' . join(l:ids, ' ')
 	endif
 
-	hi teIdentifier term=italic cterm=bold gui=italic ctermfg=Brown guifg=Brown 
+	hi teIdentifier ctermfg=Brown guifg=Brown 
 	
 
 endfunction
