@@ -1,4 +1,4 @@
-# A Vim Syntax file for TESTO-lang, simple as that
+# A Vim Syntax file for TESTO-lang
 
 ## Installation
 Copy both directories into `~/.vim`.
