@@ -3,3 +3,34 @@ setlocal smartindent
 setlocal tabstop=4
 setlocal shiftwidth=4
 setlocal expandtab
+
+function! s:DynHi()
+	
+	syn clear teIdentifier
+	
+	let l:ids = []
+	let l:matchdef = '^\s*\(machine\|flash\|network\|param\|test\|dvd\|macro\|nic\|video\|disk\)\s*\zs\w\+\ze:\{,1}\s*{\{,1}'
+	let l:matchusg = '^\s*\zs\w\+\ze\s*{\{1}'
+
+	for row in getline(1, '$')
+		if row =~ l:matchdef
+			call add(l:ids, matchstr(row, l:matchdef))
+		elseif row =~ l:matchusg
+			call add(l:ids, matchstr(row, l:matchusg))
+		endif
+	endfor
+
+	if !empty(l:ids)
+		execute 'syn keyword teIdentifier ' . join(l:ids, ' ')
+	endif
+
+	hi link teIdentifier Identifier
+
+endfunction
+
+augroup teDynHi
+	autocmd!
+	autocmd BufWritePost,CursorHold <buffer> call s:DynHi()
+augroup END
+
+call s:DynHi()
