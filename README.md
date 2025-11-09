@@ -4,4 +4,5 @@
 Copy all the directories into `~/.vim`.
 
 ## Preview
-<img width="591" height="728" alt="изображение" src="https://github.com/user-attachments/assets/2174c7ff-4064-4e75-a59b-d40817232264" />
+<img width="595" height="728" alt="изображение" src="https://github.com/user-attachments/assets/696e203f-f8b5-41bf-bee4-7d0a8afb3f6a" />
+
