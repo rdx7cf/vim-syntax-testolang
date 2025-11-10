@@ -3,7 +3,7 @@
 ## Installation
 Copy all the directories into `~/.vim`.
 
-**Optionally** add to your `.vimrc` the following lines:
+Add to your `.vimrc` the following lines:
 
 `:filetype plugin on`
 
