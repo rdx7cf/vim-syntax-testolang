@@ -5,16 +5,17 @@
 
 
 syn	keyword	teType		machine flash network param test dvd macro
-syn	keyword	teInclude	include
+syn	keyword	teInclude	include step
 syn	keyword	teConstant	true false
-syn	keyword	teStatement	abort print type wait sleep mouse move click lclick rclick dclick hold release lbtn rbtn check press plug unplug start stop shutdown exec copyto copyfrom img js bash python break continue NOT AND OR DEFINED LESS GREATER EQUAL STRLESS STRGREATER STREQUAL STRMATCH timeout interval 
+syn	keyword	teStatement	abort print type wait sleep mouse move click lclick rclick dclick hold release lbtn rbtn check press plug unplug start stop shutdown exec copyto copyfrom img js bash python break continue NOT AND OR DEFINED LESS GREATER EQUAL STRLESS STRGREATER STREQUAL STRMATCH timeout interval autoswitch 
 syn	keyword	teConditional	if else
 syn	keyword	teRepeat	for IN RANGE
 
 
 syn	region	teBrackets	start=+{+			end=+}+		transparent
 syn	region	teBraces	start='\['			end='\]'	transparent
-syn	region	teReference	start=+${+			end=+}+		containedin=teString,teExString
+syn	region	teRefLoc	start=+${+			end=+}+		containedin=teString,teExString
+syn	region	teRefGlb	start=+$<+			end=+>+		containedin=teString,teExString
 syn	region	teString	start=+"+	skip=+\\"+	end=+"+	
 syn	region	teExString	start=+"""+	skip=+\\"""+	end=+"""+	
 
@@ -38,7 +39,8 @@ hi	link	teAttrBrac	Special
 hi	link	teMemSpecifier	Constant
 hi	link	teTimeSpecifier Constant
 hi      link 	teConstant 	Constant
-hi 	link	teReference	Include
+hi 	link	teRefLoc	Include
+hi 	link	teRefGlb	Include
 hi  	link 	teString 	String
 hi  	link 	teExString 	String
 hi  	link	teComment 	Comment

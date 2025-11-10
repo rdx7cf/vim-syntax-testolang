@@ -29,4 +29,4 @@ function! s:DynHi()
 
 endfunction
 
-autocmd BufEnter,CursorHold,BufWrite,BufRead,InsertCharPre *.testo call s:DynHi()
+autocmd BufEnter,InsertCharPre *.testo call s:DynHi()
