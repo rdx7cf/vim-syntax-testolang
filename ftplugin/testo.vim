@@ -10,13 +10,13 @@ function! s:DynHi()
 	
 	let l:ids = []
 	let l:matchdef = '^\s*\(machine\|flash\|network\|param\|test\|dvd\|nic\|video\|disk\)\s*\zs\w\+\ze:\{,1}\s*{\{,1}'
-	let l:matchusg = '^\s*\zs\w\+\ze\s*{\{1}'
+"	let l:matchusg = '^\s*\zs\w\+\ze\s*{\{1}'
 
 	for row in getline(1, '$')
 		if row =~ l:matchdef
 			call add(l:ids, matchstr(row, l:matchdef))
-		elseif row =~ l:matchusg
-			call add(l:ids, matchstr(row, l:matchusg))
+"		elseif row =~ l:matchusg
+"			call add(l:ids, matchstr(row, l:matchusg))
 		endif
 	endfor
 
