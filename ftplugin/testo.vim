@@ -9,7 +9,7 @@ function! s:DynHi()
 	
 	
 	let l:ids = []
-	let l:matchdef = '^\s*\(machine\|flash\|network\|param\|test\|dvd\|nic\|video\|disk\)\s*\zs\w\+\ze:\{,1}\s*{\{,1}'
+	let l:matchdef = '^\s*\(machine\|flash\|network\|param\|test\|dvd\|nic\|video\|disk\|shared_folder\)\s*\zs\w\+\ze:\{,1}\s*{\{,1}'
 "	let l:matchusg = '^\s*\zs\w\+\ze\s*{\{1}'
 
 	for row in getline(1, '$')

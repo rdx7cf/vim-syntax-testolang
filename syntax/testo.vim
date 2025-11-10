@@ -20,6 +20,7 @@ syn	region	teExString	start=+"""+	skip=+\\"""+	end=+"""+
 
 syn 	match	teMemSpecifier	/\d\+\(K\|M\|G\)[bB]/
 syn	match	teTimeSpecifier	/\d\+\(ms\|s\|m\|h\)/
+"syn	match	teInteger	/\s\+\(\d\+\)\s\+/
 
 syn	keyword	teAttrBrak	cpus ram disk iso nic video loader qemu_enable_usb3 size source attached_to attached_to_dev adapter_type mac shared_folder host_path readonly fs folder mode arch bus attached_to_br qemu_mode graphics spice_port spice_address spice_password qemu_spice_agent plugged	 containedin=teBrackets
 syn	keyword	teAttrBrac	no_snapshots description title story feature	containedin=teBraces
@@ -33,6 +34,7 @@ hi  	link 	teConditional 	Conditional
 hi  	link 	teRepeat	Repeat
 hi 	link	teAttrBrak	Special
 hi	link	teAttrBrac	Special
+"hi	link	teInteger	Constant
 hi	link	teMemSpecifier	Constant
 hi	link	teTimeSpecifier Constant
 hi      link 	teConstant 	Constant
