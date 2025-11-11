@@ -3,6 +3,8 @@
 " Maintainer: Ruslan Evdokimov <rdx7cf@bk.ru>
 "
 
+"syn sync fromstart
+syn sync minlines=200 maxlines=500
 
 syn	keyword	teType		machine flash network param test dvd macro
 syn	keyword	teInclude	include step
@@ -22,10 +24,10 @@ syn	region	teBraces	start='\['			end='\]'	transparent
 syn	region	teRefLoc	start=+${+			end=+}+		containedin=teString,teExString
 syn	region	teRefGlb	start=+$<+			end=+>+		containedin=teString,teExString
 
+syn	region	teExString	start=+"""+	skip=+\\"""+ 	end=+"""+ keepend extend
 syn	region	teString	start=+"+	skip=+\\"+	end=+"+	 keepend
-syn	region	teExString	start=+"""+	skip=+\\"""+ 	end=+"""+ keepend
 
-syn	match	teKeyPress	/press\s\+\zs[a-zA-Z0-9+*,]\+\ze/
+syn	match	teKeyPress	/press\s\+\zs[a-zA-Z0-9+*,]\+\ze/ contains=teStatement
 
 syn	match	teInteger	/\s\+\zs\d\+\ze\s*/
 syn 	match	teMemSpecifier	/\d\+\(K\|M\|G\)[bB]/
