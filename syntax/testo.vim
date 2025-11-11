@@ -43,7 +43,7 @@ hi		teTimeSpecifier term=italic cterm=italic ctermfg=Blue
 hi	link	teMemSpecifier 	teTimeSpecifier	
 
 hi		teLogStr	term=italic cterm=italic ctermfg=Red
-hi	link	teLogOps	teLogical
+hi	link	teLogOps	teLogStr
 
 hi		teParameter	term=italic cterm=italic ctermfg=DarkYellow	
 
