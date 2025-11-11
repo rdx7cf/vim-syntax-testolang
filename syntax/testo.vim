@@ -21,15 +21,16 @@ syn	region	teBrackets	start=+{+			end=+}+		transparent
 syn	region	teBraces	start='\['			end='\]'	transparent
 syn	region	teRefLoc	start=+${+			end=+}+		containedin=teString,teExString
 syn	region	teRefGlb	start=+$<+			end=+>+		containedin=teString,teExString
-syn	region	teString	start=+"\s*+	skip=+\\"+	end=+\s*"+			
-syn	region	teExString	start=+"""\s*+	skip=+\\"""+	end=+\s*"""+	
 
-"syn	match	teKeyPress	/\<press\s\+\zs[a-zA-Z0-9+*,]\+\ze/
+syn	region	teString	start=+"+	skip=+\\"+	end=+"+	 keepend
+syn	region	teExString	start=+"""+	skip=+\\"""+ 	end=+"""+ keepend
+
+syn	match	teKeyPress	/press\s\+\zs[a-zA-Z0-9+*,]\+\ze/
 
 syn	match	teInteger	/\s\+\zs\d\+\ze\s*/
 syn 	match	teMemSpecifier	/\d\+\(K\|M\|G\)[bB]/
 syn	match	teTimeSpecifier	/\d\+\(ms\|s\|m\|h\)/
-syn	match	teMacroExec	/^\s\+\zs\w\+\ze\s*(/
+syn	match	teMacroExec	/\s\+\zs\w\+\ze\s*(/
 
 syn	keyword	teAttrBrak	cpus ram disk iso nic video loader qemu_enable_usb3 size source attached_to attached_to_dev adapter_type mac shared_folder host_path readonly fs folder mode arch bus attached_to_br qemu_mode graphics spice_port spice_address spice_password qemu_spice_agent plugged	 contained containedin=teBrackets
 syn	keyword	teAttrBrac	no_snapshots description title story feature	contained containedin=teBraces
@@ -59,7 +60,7 @@ hi	link	teInteger	Include
 hi      link 	teConstant 	Constant
 hi 	link	teRefLoc	Include
 hi 	link	teRefGlb	Include
-hi  	link 	teString 	String
+hi  	link 	teString	String
 hi  	link 	teExString 	String
 hi  	link	teComment 	Comment
 
