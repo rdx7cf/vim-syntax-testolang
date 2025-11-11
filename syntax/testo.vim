@@ -7,7 +7,7 @@
 syn	keyword	teType		machine flash network param test dvd macro
 syn	keyword	teInclude	include step
 syn	keyword	teConstant	true false
-syn	keyword	teParameter	timeout interval autoswitch
+syn	keyword	teParameter	timeout interval autoswitch as
 syn	keyword	teStatement	abort print type wait sleep mouse move click lclick rclick dclick hold release lbtn rbtn check plug unplug start stop shutdown exec copyto copyfrom img js bash python break continue press
 syn	keyword	teConditional	if else
 syn	keyword	teRepeat	for IN RANGE
@@ -21,8 +21,8 @@ syn	region	teBrackets	start=+{+			end=+}+		transparent
 syn	region	teBraces	start='\['			end='\]'	transparent
 syn	region	teRefLoc	start=+${+			end=+}+		containedin=teString,teExString
 syn	region	teRefGlb	start=+$<+			end=+>+		containedin=teString,teExString
-syn	region	teString	start=+"+	skip=+\\"+	end=+"+	
-syn	region	teExString	start=+"""+	skip=+\\"""+	end=+"""+	
+syn	region	teString	start=+"\s*+	skip=+\\"+	end=+\s*"+			
+syn	region	teExString	start=+"""\s*+	skip=+\\"""+	end=+\s*"""+	
 
 "syn	match	teKeyPress	/\<press\s\+\zs[a-zA-Z0-9+*,]\+\ze/
 
