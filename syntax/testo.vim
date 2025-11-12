@@ -6,6 +6,9 @@
 "syn sync fromstart
 syn sync minlines=200 maxlines=500
 
+
+" KEYWORDS
+
 syn	keyword	teType		machine flash network param test dvd macro
 
 syn	keyword	teInclude	include step
@@ -14,7 +17,8 @@ syn	keyword	teConstant	true false
 
 syn	keyword	teParameter	timeout interval autoswitch as
 
-syn	keyword	teStatement	abort print type wait sleep mouse move click lclick rclick dclick hold release lbtn rbtn check plug unplug start stop shutdown exec copyto copyfrom img js bash python break continue press
+
+syn	keyword	teStatement	abort print type wait sleep mouse move click lclick rclick dclick hold release lbtn rbtn check plug unplug start stop shutdown exec copyto copyfrom img js bash python break continue
 
 syn	keyword	teConditional	if else
 syn	keyword	teRepeat	for IN RANGE
@@ -26,7 +30,24 @@ syn	keyword	teAttrBrac	no_snapshots snapshots description depends_on title sever
 syn	keyword	teLogStr	NOT AND OR DEFINED LESS GREATER EQUAL STRLESS STRGREATER STREQUAL STRMATCH
 syn	match	teLogOps	/&&\|||\|!/
 
+" A little dirty hack...
+syn	keyword	tePress		press nextgroup=teKeySeq skipwhite
+syn	match	teKeySeq	/\zs[a-zA-Z0-9+*, ]\+\ze/ contained containedin=tePress 
 
+
+
+" MATCHES
+
+syn	match	teUserStatement	/\s\+\zs\w\+\ze\s*(/
+
+syn	match	teInteger	/\s*\zs\d\+\ze\s*/	contained containedin=teBrackets
+syn 	match	teMemSpecifier	/\d\+\(K\|M\|G\)[bB]/	contained containedin=teBrackets
+syn	match	teTimeSpecifier	/\d\+\(ms\|s\|m\|h\)/	contained containedin=teBrackets
+
+syn	match	teComment	/#.*$/
+
+
+" REGIONS
 
 syn	region	teBrackets	start=+{+			end=+}+		transparent
 syn	region	teBraces	start='\['			end='\]'	transparent
@@ -36,39 +57,44 @@ syn	region	teRefGlb	start=+$<+			end=+>+		containedin=teString,teExString
 syn	region	teString	start=+"+	skip=+\\"+	end=+"+	 keepend
 syn	region	teExString	start=+"""+	skip=+\\"""+ 	end=+"""+ keepend extend contains=teString
 
-"syn	match	teKeyPress	/press\s\+\zs[a-zA-Z0-9+*,]\+\ze/
-
-syn	match	teUserStatement	/\s\+\zs\w\+\ze\s*(/
-syn	match	teInteger	/\s\+\zs\d\+\ze\s*/
-syn 	match	teMemSpecifier	/\d\+\(K\|M\|G\)[bB]/
-syn	match	teTimeSpecifier	/\d\+\(ms\|s\|m\|h\)/
 
 
-syn	match	teComment	/#.*$/
 
-"hi		teKeyPress	term=bold cterm=bold ctermfg=Red
 
-hi		teTimeSpecifier term=italic cterm=italic ctermfg=Blue
-hi	link	teMemSpecifier 	teTimeSpecifier	
 
-hi		teLogStr	term=bold cterm=bold ctermfg=LightRed
+" HIGHLIGHT
+
+hi  	 	teType 		ctermfg=LightGreen cterm=bold
+
+hi 		teInclude	ctermfg=LightGreen cterm=italic
+
+hi  	 	teStatement 	ctermfg=Yellow cterm=bold
+hi		teUserStatement ctermfg=Yellow cterm=italic 
+hi  	link 	teConditional 	teStatement
+hi  	link 	teRepeat	teStatement
+hi	link	tePress		teStatement
+
+hi		teKeySeq	ctermfg=Blue cterm=italic
+
+hi 		teAttrBrak	ctermfg=Red
+hi	link	teAttrBrac	teAttrBrak
+
+hi       	teConstant 	ctermfg=Red cterm=italic
+
+hi 		teRefLoc	ctermfg=LightBlue
+hi 	link	teRefGlb	teRefLoc
+
+hi  	 	teString	ctermfg=Magenta
+hi  	link 	teExString 	teExString
+
+hi		teInteger	ctermfg=LightMagenta cterm=italic
+hi	link	teTimeSpecifier teInteger
+hi	link	teMemSpecifier 	teInteger	
+
+hi		teLogStr	ctermfg=LightRed
 hi	link	teLogOps	teLogStr
 
-hi		teParameter	term=italic cterm=italic ctermfg=DarkYellow	
+hi		teParameter	term=italic cterm=italic ctermfg=LightYellow	
 
-hi  	link 	teType 		Type
-hi 	link	teInclude	Type
-hi  	link 	teStatement 	Statement
-hi	link	teUserStatement	Statement
-hi  	link 	teConditional 	Conditional
-hi  	link 	teRepeat	Repeat
-hi 	link	teAttrBrak	Special
-hi	link	teAttrBrac	Special
-hi	link	teInteger	Include
-hi      link 	teConstant 	Constant
-hi 	link	teRefLoc	Include
-hi 	link	teRefGlb	Include
-hi  	link 	teString	String
-hi  	link 	teExString 	String
-hi  	link	teComment 	Comment
+hi  		teComment 	ctermfg=Cyan cterm=italic
 
