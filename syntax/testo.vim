@@ -38,7 +38,7 @@ syn	match	teKeySeq	/\zs[a-zA-Z0-9+*, ]\+\ze/ contained
 
 " MATCHES
 
-syn	match	teUserStatement	/\s\+\zs\w\+\ze\s*(/
+syn	match	teUserStatement	/\s\+\zs\w\+\ze\s*(/	contained containedin=teBrackets
 
 syn	match	teInteger	/\s*\zs\d\+\ze\s*/	contained containedin=teBrackets
 syn 	match	teMemSpecifier	/\d\+\(K\|M\|G\)[bB]/	contained containedin=teBrackets
@@ -79,19 +79,19 @@ hi		teKeySeq	ctermfg=Brown cterm=bold
 hi 		teAttrBrak	ctermfg=Red
 hi	link	teAttrBrac	teAttrBrak
 
-hi       	teConstant 	ctermfg=Red cterm=bold
+hi       	teConstant 	ctermfg=DarkGreen cterm=bold
 
-hi 		teRefLoc	ctermfg=LightBlue cterm=bold
+hi 		teRefLoc	ctermfg=Blue cterm=bold
 hi 	link	teRefGlb	teRefLoc
 
 hi  	 	teString	ctermfg=Magenta cterm=bold
 hi  	link 	teExString 	teExString
 
-hi		teInteger	ctermfg=Blue
+hi		teInteger	ctermfg=LightRed
 hi	link	teTimeSpecifier teInteger
 hi	link	teMemSpecifier 	teInteger	
 
-hi		teLogStr	ctermfg=LightRed
+hi		teLogStr	ctermfg=LightMagenta cterm=bold
 hi	link	teLogOps	teLogStr
 
 hi		teParameter	ctermfg=LightYellow	
