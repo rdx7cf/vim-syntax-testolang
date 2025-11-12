@@ -11,17 +11,17 @@ syn sync minlines=200 maxlines=500
 
 syn	keyword	teType		machine flash network param test dvd macro
 
-syn	keyword	teInclude	include step
+syn	keyword	teInclude	include
 
-syn	keyword	teConstant	true false
+syn	keyword	teConstant	true false contained containedin=teBrackets
 
-syn	keyword	teParameter	timeout interval autoswitch as
+syn	keyword	teParameter	timeout interval autoswitch as from_top from_left from_right from_bottom move_up move_left move_right move_down contained containedin=teBrackets
 
 
-syn	keyword	teStatement	abort print type wait sleep mouse move click lclick rclick dclick hold release lbtn rbtn check plug unplug start stop shutdown exec copyto copyfrom img js bash python break continue
+syn	keyword	teStatement	step abort print type wait sleep mouse move click lclick rclick dclick hold release lbtn rbtn check plug unplug start stop shutdown exec copyto copyfrom img js bash python break continue contained containedin=teBrackets
 
-syn	keyword	teConditional	if else
-syn	keyword	teRepeat	for IN RANGE
+syn	keyword	teConditional	if else		contained containedin=teBrackets
+syn	keyword	teRepeat	for IN RANGE	contained containedin=teBrackets
 
 syn	keyword	teAttrBrak	cpus ram disk iso nic video loader qemu_enable_usb3 size source attached_to attached_to_dev adapter_type mac shared_folder host_path readonly fs folder mode arch bus attached_to_br qemu_mode graphics spice_port spice_address spice_password qemu_spice_agent plugged	 contained containedin=teBrackets
 
@@ -32,7 +32,7 @@ syn	match	teLogOps	/&&\|||\|!/
 
 " A little dirty hack...
 syn	keyword	tePress		press nextgroup=teKeySeq skipwhite
-syn	match	teKeySeq	/\zs[a-zA-Z0-9+*, ]\+\ze/ contained containedin=tePress 
+syn	match	teKeySeq	/\zs[a-zA-Z0-9+*, ]\+\ze/ contained
 
 
 
@@ -66,35 +66,35 @@ syn	region	teExString	start=+"""+	skip=+\\"""+ 	end=+"""+ keepend extend contain
 
 hi  	 	teType 		ctermfg=LightGreen cterm=bold
 
-hi 		teInclude	ctermfg=LightGreen cterm=italic
+hi 		teInclude	ctermfg=LightGreen cterm=bold
 
 hi  	 	teStatement 	ctermfg=Yellow cterm=bold
-hi		teUserStatement ctermfg=Yellow cterm=italic 
+hi		teUserStatement ctermfg=Yellow cterm=bold 
 hi  	link 	teConditional 	teStatement
 hi  	link 	teRepeat	teStatement
 hi	link	tePress		teStatement
 
-hi		teKeySeq	ctermfg=Blue cterm=italic
+hi		teKeySeq	ctermfg=Brown cterm=bold
 
 hi 		teAttrBrak	ctermfg=Red
 hi	link	teAttrBrac	teAttrBrak
 
-hi       	teConstant 	ctermfg=Red cterm=italic
+hi       	teConstant 	ctermfg=Red cterm=bold
 
-hi 		teRefLoc	ctermfg=LightBlue
+hi 		teRefLoc	ctermfg=LightBlue cterm=bold
 hi 	link	teRefGlb	teRefLoc
 
-hi  	 	teString	ctermfg=Magenta
+hi  	 	teString	ctermfg=Magenta cterm=bold
 hi  	link 	teExString 	teExString
 
-hi		teInteger	ctermfg=LightMagenta cterm=italic
+hi		teInteger	ctermfg=Blue
 hi	link	teTimeSpecifier teInteger
 hi	link	teMemSpecifier 	teInteger	
 
 hi		teLogStr	ctermfg=LightRed
 hi	link	teLogOps	teLogStr
 
-hi		teParameter	term=italic cterm=italic ctermfg=LightYellow	
+hi		teParameter	ctermfg=LightYellow	
 
-hi  		teComment 	ctermfg=Cyan cterm=italic
+hi  		teComment 	ctermfg=Cyan 
 
