@@ -21,7 +21,7 @@ syn	keyword	teRepeat	for IN RANGE
 
 syn	keyword	teAttrBrak	cpus ram disk iso nic video loader qemu_enable_usb3 size source attached_to attached_to_dev adapter_type mac shared_folder host_path readonly fs folder mode arch bus attached_to_br qemu_mode graphics spice_port spice_address spice_password qemu_spice_agent plugged	 contained containedin=teBrackets
 
-syn	keyword	teAttrBrac	no_snapshots description title story feature	contained containedin=teBraces
+syn	keyword	teAttrBrac	no_snapshots snapshots description depends_on title severity epic issues labels owner flaky story feature	contained containedin=teBraces
 
 syn	keyword	teLogStr	NOT AND OR DEFINED LESS GREATER EQUAL STRLESS STRGREATER STREQUAL STRMATCH
 syn	match	teLogOps	/&&\|||\|!/
@@ -33,8 +33,8 @@ syn	region	teBraces	start='\['			end='\]'	transparent
 syn	region	teRefLoc	start=+${+			end=+}+		containedin=teString,teExString
 syn	region	teRefGlb	start=+$<+			end=+>+		containedin=teString,teExString
 
-syn	region	teExString	start=+"""+	skip=+\\"""+ 	end=+"""+ keepend extend
 syn	region	teString	start=+"+	skip=+\\"+	end=+"+	 keepend
+syn	region	teExString	start=+"""+	skip=+\\"""+ 	end=+"""+ keepend extend contains=teString
 
 "syn	match	teKeyPress	/press\s\+\zs[a-zA-Z0-9+*,]\+\ze/
 
