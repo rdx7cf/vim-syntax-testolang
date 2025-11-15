@@ -52,7 +52,7 @@ syn	region	teRefLoc	start=+${+			end=+}+		containedin=teString,teExString
 syn	region	teRefGlb	start=+$<+			end=+>+		containedin=teString,teExString
 
 syn	region	teString	start=+"+	skip=+\\"+	end=+"+	 keepend
-syn	region	teExString	start=+"""+	skip=+\\"""+ 	end=+"""+ keepend extend contains=teString
+syn	region	teExString	start=+"""+	skip=+\\"""+ 	end=+"""+ keepend extend
 
 
 
@@ -82,7 +82,7 @@ hi 		teRefLoc	ctermfg=Blue cterm=bold
 hi 	link	teRefGlb	teRefLoc
 
 hi  	 	teString	ctermfg=Magenta cterm=bold
-hi  	link 	teExString 	teExString
+hi  	link 	teExString 	teString
 
 hi		teInteger	ctermfg=LightRed
 hi	link	teTimeSpecifier teInteger
