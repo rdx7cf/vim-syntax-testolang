@@ -18,7 +18,7 @@ syn	keyword	teConstant	true false contained containedin=teBrackets
 syn	keyword	teParameter	timeout interval autoswitch as from_top from_left from_right from_bottom move_up move_left move_right move_down contained containedin=teBrackets
 
 
-syn	keyword	teStatement	step abort print type wait sleep mouse move click lclick rclick dclick hold release lbtn rbtn check plug unplug start stop shutdown exec copyto copyfrom img js bash python break continue contained containedin=teBrackets
+syn	keyword	teStatement	step abort print type wait sleep mouse move click lclick rclick dclick hold release lbtn rbtn check plug unplug start stop shutdown exec copyto copyfrom img js bash python break continue press contained containedin=teBrackets
 
 syn	keyword	teConditional	if else		contained containedin=teBrackets
 syn	keyword	teRepeat	for IN RANGE	contained containedin=teBrackets
@@ -30,10 +30,7 @@ syn	keyword	teAttrBrac	no_snapshots snapshots description depends_on title sever
 syn	keyword	teLogStr	NOT AND OR DEFINED LESS GREATER EQUAL STRLESS STRGREATER STREQUAL STRMATCH
 syn	match	teLogOps	/&&\|||\|!/
 
-" A little dirty hack...
-syn	keyword	tePress		press nextgroup=teKeySeq skipwhite
-syn	match	teKeySeq	/\zs[a-zA-Z0-9+*, ]\+\ze/ contained
-
+syn 	match	teKeySeq	/\(press\s*\)\@<=[a-zA-Z0-9,*+ ]\+/
 
 
 " MATCHES
