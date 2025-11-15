@@ -15,7 +15,7 @@ syn	keyword	teInclude	include
 
 syn	keyword	teConstant	true false contained containedin=teBrackets
 
-syn	keyword	teParameter	timeout interval autoswitch as from_top from_left from_right from_bottom move_up move_left move_right move_down contained containedin=teBrackets
+syn	keyword	teParameter	timeout interval autoswitch as from_top from_left from_right from_bottom move_up move_left move_right move_down match_color match_foreground match_background center left_bottom left_center left_top center_bottom center_top right_bottom right_center right_top contained containedin=teBrackets
 
 
 syn	keyword	teStatement	step abort print type wait sleep mouse move click lclick rclick dclick hold release lbtn rbtn check plug unplug start stop shutdown exec copyto copyfrom img js bash python break continue press contained containedin=teBrackets
@@ -28,12 +28,15 @@ syn	keyword	teAttrBrak	cpus ram disk iso nic video loader qemu_enable_usb3 size 
 syn	keyword	teAttrBrac	no_snapshots snapshots description depends_on title severity epic issues labels owner flaky story feature	contained containedin=teBraces
 
 syn	keyword	teLogStr	NOT AND OR DEFINED LESS GREATER EQUAL STRLESS STRGREATER STREQUAL STRMATCH
-syn	match	teLogOps	/&&\|||\|!/
-
-syn 	match	teKeySeq	/\(press\s*\)\@<=[a-zA-Z0-9,*+ ]\+/
 
 
 " MATCHES
+syn	match	teLogOps	/&&\|||\|!/
+
+syn	match	teKeySeq	/\(press\s\+\)\@<=\w\+\s*\(,\s*\w\+\)*\(+\s*\w\+\)*\(\*\s*\d\+\)*/
+
+syn	match	teCustomName	/\(\(^\|\s\+\)machine\|\(^\|\s\+\)flash\|\(^\|\s\+\)network\|\(^\|\s\+\)param\|\(^\|\s\+\)test\|\(^\|\s\+\)dvd\|\(^\|\s\+\)macro\)\@<=\s\+\zs\w\+\ze\s\+/
+"syn	match	teCustomName	/\s\+\zs\w\+\ze\s\+/ 
 
 syn	match	teUserStatement	/\s\+\zs\w\+\ze\s*(/	contained containedin=teBrackets
 
@@ -62,6 +65,7 @@ syn	region	teExString	start=+"""+	skip=+\\"""+ 	end=+"""+ keepend extend
 " HIGHLIGHT
 
 hi  	 	teType 		ctermfg=LightGreen cterm=bold
+hi		teCustomName	ctermfg=DarkGreen   cterm=bold
 
 hi 		teInclude	ctermfg=LightGreen cterm=bold
 
