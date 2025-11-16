@@ -35,8 +35,10 @@ syn	match	teLogOps	/&&\|||\|!/
 
 syn	match	teKeySeq	/\(press\s\+\)\@<=\w\+\s*\(,\s*\w\+\)*\(+\s*\w\+\)*\(\*\s*\d\+\)*/
 
-syn	match	teCustomName	/\(\(^\|\s\+\)machine\|\(^\|\s\+\)flash\|\(^\|\s\+\)network\|\(^\|\s\+\)param\|\(^\|\s\+\)test\|\(^\|\s\+\)dvd\|\(^\|\s\+\)macro\)\@<=\s\+\zs\w\+\ze\s\+/
-"syn	match	teCustomName	/\s\+\zs\w\+\ze\s\+/ 
+syn	match	teCustomName	/\(\(^\|\s\+\)\(machine\|flash\|network\|param\|dvd\)\s\+\)\@<=\zs\w\+\ze/
+syn	match	teTestName	/\(\(^\|\s\+\)test\s\+\)\@<=\w\+\(\s*:\s*\w\+\(\s*,\s*\w\+\)*\)\{,1}/
+syn	match	teMacroName	/\(\(^\|\s\+\)macro\s\+\)\{,1}\s\+\w\+\ze(/
+
 
 syn	match	teUserStatement	/\s\+\zs\w\+\ze\s*(/	contained containedin=teBrackets
 
@@ -65,12 +67,14 @@ syn	region	teExString	start=+"""+	skip=+\\"""+ 	end=+"""+ keepend extend
 " HIGHLIGHT
 
 hi  	 	teType 		ctermfg=LightGreen cterm=bold
-hi		teCustomName	ctermfg=DarkGreen   cterm=bold
+
+hi		teCustomName	ctermfg=DarkGreen	cterm=bold
+hi	link	teTestName	teCustomName
+hi		teMacroName 	ctermfg=Yellow cterm=bold
 
 hi 		teInclude	ctermfg=LightGreen cterm=bold
 
 hi  	 	teStatement 	ctermfg=Yellow cterm=bold
-hi		teUserStatement ctermfg=Yellow cterm=bold 
 hi  	link 	teConditional 	teStatement
 hi  	link 	teRepeat	teStatement
 hi	link	tePress		teStatement
