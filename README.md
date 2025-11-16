@@ -10,5 +10,6 @@ Add to your `.vimrc` the following lines:
 `:filetype plugin indent on`
 
 ## Preview
-<img width="595" height="728" alt="изображение" src="https://github.com/user-attachments/assets/696e203f-f8b5-41bf-bee4-7d0a8afb3f6a" />
+<img width="902" height="791" alt="preview_1" src="https://github.com/user-attachments/assets/c87853cb-7ced-4136-bd02-e6938c256030" />
+
 
