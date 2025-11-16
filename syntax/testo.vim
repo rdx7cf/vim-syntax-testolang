@@ -45,15 +45,15 @@ syn	match	teSign		"+\|-\|\*\|/"
 "syn	match	teKeySeq	/\(press\s\+\)\@<=\(\(,\=\|+\=\)\w\+\s*\(\*\s*\d\+\)*\)/
 "syn	match	teKeySeq	/\(press\s\+\)\@<=[a-zA-Z0-9_+*, ]\+\ze\s*\(interval\|timeout\|;\|$\)/
 
-syn	match	teCustomName	/\(\(^\|\s\+\)\(machine\|flash\|network\|param\|dvd\)\s\+\)\@<=\zs\w\+\ze/
-syn	match	teTestName	/\(\(^\|\s\+\)test\s\+\)\@<=\w\+\(\s*:\s*\w\+\(\s*,\s*\w\+\)*\)\{,1}/
-syn	match	teNameBefAct	/\(if\|else\)\{0}\w\+\s\+\ze{/
-syn	match	teMacroName	/\(\(^\|\s\+\)macro\s\+\)\{,1}\s\+\w\+\ze(/
+syn	match	teCustomName	/\%(\%(^\|\s\+\)\(machine\|flash\|network\|param\|dvd\)\s\+\)\@<=\zs\w\+\ze/
+syn	match	teTestName	/\%(\%(^\|\s\+\)test\s\+\)\@<=\w\+\%(\s*:\s*\w\+\(\s*,\s*\w\+\)*\)\{,1}/
+syn	match	teNameBefAct	/\w\+\s\+\ze{/
+syn	match	teMacroName	/\%(\%(^\|\s\+\)macro\s\+\)\{,1}\s\+\<\%(if\)\@!\w\+\>\ze\s*(/
 
 
-syn	match	teInteger	/\(_\)\@<!\d\+/	contained containedin=teBrackets
-syn 	match	teMemSpecifier	/\d\+\(K\|M\|G\)[bB]/	contained containedin=teBrackets
-syn	match	teTimeSpecifier	/\d\+\(ms\|s\|m\|h\)/	contained containedin=teBrackets
+syn	match	teInteger	/\%(_\|\a\)\@<!\d\+/	contained containedin=teBrackets
+syn 	match	teMemSpecifier	/\d\+\%(K\|M\|G\)[bB]/	contained containedin=teBrackets
+syn	match	teTimeSpecifier	/\d\+\%(ms\|s\|m\|h\)/	contained containedin=teBrackets
 
 syn	match	teComment	/#.*$/
 
@@ -80,7 +80,8 @@ hi  	 	teType 		ctermfg=LightGreen cterm=bold
 hi		teCustomName	ctermfg=DarkGreen	cterm=bold
 hi	link	teTestName	teCustomName
 hi	link	teNameBefAct	teCustomName
-hi		teMacroName 	ctermfg=Yellow cterm=bold
+
+hi  	 	teConditional 	ctermfg=LightYellow cterm=bold
 
 hi		teKeySeq	ctermfg=Brown cterm=bold
 hi		teSign		ctermfg=LightMagenta  
@@ -88,7 +89,7 @@ hi		teSign		ctermfg=LightMagenta
 hi 		teInclude	ctermfg=LightGreen cterm=bold
 
 hi  	 	teStatement 	ctermfg=Yellow cterm=bold
-hi  	link 	teConditional 	teStatement
+hi	link	teMacroName 	teStatement
 hi  	link 	teRepeat	teStatement
 hi	link	tePress		teStatement
 
