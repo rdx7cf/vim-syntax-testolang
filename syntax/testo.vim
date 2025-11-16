@@ -47,9 +47,9 @@ syn	match	teSign		"+\|-\|\*\|/"
 "syn	match	teKeySeq	/\(press\s\+\)\@<=\(\(,\=\|+\=\)\w\+\s*\(\*\s*\d\+\)*\)/
 "syn	match	teKeySeq	/\(press\s\+\)\@<=[a-zA-Z0-9_+*, ]\+\ze\s*\(interval\|timeout\|;\|$\)/
 
-syn	match	teCustomName	/\%(\%(^\|\s\+\)\(machine\|flash\|network\|param\|dvd\)\s\+\)\@<=\zs\w\+\ze/
+syn	match	teCustomName	/\%(\%(^\|\s\+\)\(machine\|flash\|network\|param\|dvd\|disk\)\s\+\)\@<=\zs\w\+\ze/
 syn	match	teTestName	/\%(\%(^\|\s\+\)test\s\+\)\@<=\w\+\%(\s*:\s*\w\+\(\s*,\s*\w\+\)*\)\{,1}/
-syn	match	teNameBefAct	/\w\+\s\+\ze{/
+syn	match	teNameBefAct	/\w\+\ze\s*{/
 syn	match	teMacroName	/\%(\%(^\|\s\+\)macro\s\+\)\{,1}\s\+\<\%(if\|for\)\@!\w\+\>\ze\s*(/
 
 syn	match	teRefLoc	/\${\w\+}/	contained containedin=teString,teExString
