@@ -10,7 +10,8 @@ Add to your `.vimrc` the following lines:
 `:filetype plugin indent on`
 
 ## Preview
-<img width="866" height="918" alt="изображение" src="https://github.com/user-attachments/assets/c03f6dec-8c20-400a-9f8d-43c1deb2f613" />
+<img width="790" height="917" alt="изображение" src="https://github.com/user-attachments/assets/92547ee1-32cb-437d-b1b9-cb6f51e788f5" />
+
 
 
 
