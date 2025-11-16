@@ -64,6 +64,7 @@ syn	region	teBrackets	start=+{+			end=+}+		transparent
 syn	region	teBraces	start='\['			end='\]'	transparent
 syn	region	teRefLoc	start=+${+			end=+}+		containedin=teString,teExString
 syn	region	teRefGlb	start=+$<+			end=+>+		containedin=teString,teExString
+syn	region	teRegLoop	start=+(+			end=+)+		contains=ALLBUT,teKeySeq
 
 syn	region	teString	start=+"+	skip=+\\"+	end=+"+	 keepend
 syn	region	teExString	start=+"""+	skip=+\\"""+ 	end=+"""+ keepend extend
