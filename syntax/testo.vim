@@ -37,6 +37,7 @@ syn	match	teKeySeq	/\(press\s\+\)\@<=\w\+\s*\(,\s*\w\+\)*\(+\s*\w\+\)*\(\*\s*\d\
 
 syn	match	teCustomName	/\(\(^\|\s\+\)\(machine\|flash\|network\|param\|dvd\)\s\+\)\@<=\zs\w\+\ze/
 syn	match	teTestName	/\(\(^\|\s\+\)test\s\+\)\@<=\w\+\(\s*:\s*\w\+\(\s*,\s*\w\+\)*\)\{,1}/
+syn	match	teNameBefAct	/\(if\|else\)\{0}\w\+\s\+\ze{/
 syn	match	teMacroName	/\(\(^\|\s\+\)macro\s\+\)\{,1}\s\+\w\+\ze(/
 
 
@@ -70,6 +71,7 @@ hi  	 	teType 		ctermfg=LightGreen cterm=bold
 
 hi		teCustomName	ctermfg=DarkGreen	cterm=bold
 hi	link	teTestName	teCustomName
+hi	link	teNameBefAct	teCustomName
 hi		teMacroName 	ctermfg=Yellow cterm=bold
 
 hi 		teInclude	ctermfg=LightGreen cterm=bold
