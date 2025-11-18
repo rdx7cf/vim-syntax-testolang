@@ -19,10 +19,11 @@ syn	keyword	teConstant	true false contained containedin=teBrackets
 
 syn	keyword	teParameter	timeout interval autoswitch as from_top from_left from_right from_bottom move_up move_left move_right move_down match_color match_foreground match_background center left_bottom left_center left_top center_bottom center_top right_bottom right_center right_top contained containedin=teBrackets
 
-syn 	case	ignore
-syn	keyword	teKeySeq	ONE TWO THREE FOUR FIVE SIX SEVEN EIGHT NINE ZERO A B C D E F G H I J K L M N O P Q R S T U V W X Y Z MINUS EQUALSIGN BACKSPACE TAB LEFTBRACE RIGHTBRACE ENTER LEFTCTRL SEMICOLON APOSTROPHE GRAVE LEFTSHIFT BACKSLASH COMMA DOT SLASH RIGHTSHIFT LEFTALT SPACE CAPSLOCK F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 NUMLOCK KP_0 KP_1 KP_2 KP_3 KP_4 KP_5 KP_6 KP_7 KP_8 KP_9 KP_PLUS KP_MINUS KP_SLASH KP_ASTERISK KP_ENTER KP_DOT SCROLLLOCK RIGHTCTRL RIGHTALT HOME UP PAGEUP LEFT RIGHT END DOWN PAGEDOWN INSERT DELETE LEFTMETA RIGHTMETA SCROLLUP SCROLLDOWN
-
 syn	keyword	teStatement	abort print type wait sleep mouse move click lclick rclick dclick hold release lbtn rbtn check plug unplug start stop shutdown exec copyto copyfrom img js bash python break continue press contained containedin=teBrackets
+
+syn 	case	ignore
+syn	keyword	teKeySeq	ONE TWO THREE FOUR FIVE SIX SEVEN EIGHT NINE ZERO A B C D E F G H I J K L M N O P Q R S T U V W X Y Z MINUS EQUALSIGN BACKSPACE TAB LEFTBRACE RIGHTBRACE ENTER LEFTCTRL SEMICOLON APOSTROPHE GRAVE LEFTSHIFT BACKSLASH COMMA DOT SLASH RIGHTSHIFT LEFTALT SPACE CAPSLOCK F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 NUMLOCK KP_0 KP_1 KP_2 KP_3 KP_4 KP_5 KP_6 KP_7 KP_8 KP_9 KP_PLUS KP_MINUS KP_SLASH KP_ASTERISK KP_ENTER KP_DOT SCROLLLOCK RIGHTCTRL RIGHTALT HOME UP PAGEUP LEFT RIGHT END DOWN PAGEDOWN INSERT DELETE LEFTMETA RIGHTMETA SCROLLUP SCROLLDOWN contained containedin=teBrackets
+
 
 syn	keyword	teConditional	if else		contained containedin=teBrackets
 syn	keyword	teRepeat	IN RANGE for	contained containedin=teBrackets
@@ -51,6 +52,8 @@ syn	match	teCustomName	/\%(\%(^\|\s\+\)\(machine\|flash\|network\|param\|dvd\|di
 syn	match	teTestName	/\%(\%(^\|\s\+\)test\s\+\)\@<=\w\+\%(\s*:\s*\w\+\(\s*,\s*\w\+\)*\)\{,1}/
 syn	match	teNameBefAct	/\w\+\ze\s*{/
 syn	match	teMacroName	/\%(\%(^\|\s\+\)macro\s\+\)\{,1}\s\+\<\%(if\|for\)\@!\w\+\>\ze\s*(/
+
+syn	match	teScroll	/\<wheel-down\>\|\<wheel-up\>/
 
 syn	match	teRefLoc	/\${\w\+}/	contained containedin=teString,teExString
 syn	match	teRefGlb	/\$<\w\+>/	contained containedin=teString,teExString
@@ -95,8 +98,7 @@ hi		teStep		ctermfg=DarkGreen  cterm=italic,bold
 
 hi  	 	teStatement 	ctermfg=Yellow cterm=bold
 hi		teMacroName 	ctermfg=Yellow cterm=bold,italic
-hi	link	tePress		teStatement
-
+hi	link	teScroll	teStatement	
 
 hi 		teAttrBrak	ctermfg=Red
 hi	link	teAttrBrac	teAttrBrak
